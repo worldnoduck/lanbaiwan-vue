@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+
+    },
+    "typeRoots": ["node_modules/@types"],
+    "sourceMap": true,
+    "outDir": "./dist",
+
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","auto-import.d.ts","src/types/**/*.d.ts"],
+"exclude": [
+    "**/*.vue"
+  ]}
