@@ -6,6 +6,7 @@ pipeline {
                 // 检出代码
                 checkout scm
                 // 构建代码
+                sh 'npm node -v'
                 sh 'npm install'
                 sh 'npm run build'
             }
