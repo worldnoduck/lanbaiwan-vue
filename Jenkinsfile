@@ -6,7 +6,7 @@ pipeline {
                 // 检出代码
                 checkout scm
                 // 构建代码
-                sh 'nvm use 20.18.1'
+               
                 sh 'node -v'
                 sh 'npm install'
                 sh 'npm run build'
