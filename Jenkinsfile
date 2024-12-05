@@ -9,7 +9,10 @@ pipeline {
                 // 构建代码
                 sh 'whoami'
                 sh 'node -v'
-                
+                 sh '''
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                    '''
                 // 安装 NVM
                
                 sh 'nvm use 20.18.1'
