@@ -284,7 +284,7 @@ function videolazyLoadContent() {
     });
   }
 }
-const zhanshishu=ref<number>();
+const zhanshishu = ref<number>(1);
 const setZhanshishu=()=> {
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     if (screenWidth < 600) {
