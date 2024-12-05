@@ -7,20 +7,34 @@ pipeline {
         stage('Install Node') {
             steps {
                 script {
-                    // 确保 nvm 被正确加载并安装所需的 node 版本
+                    // 安装和使用指定的 Node 版本
                     sh '''
                         . $NVM_DIR/nvm.sh
                         nvm install 20.18.1
+                        node -v
                         nvm use 20.18.1
                     '''
                 }
             }
         }
-        stage('Test') {
+        stage('Install Dependencies') {
             steps {
-                // 运行测试
                 script {
-                    // 确保使用正确的 node 版本进行测试
+                    // 安装 pnpm 和项目依赖
+                    sh '''
+                        . $NVM_DIR/nvm.sh
+                        nvm use 20.18.1
+                        node -v
+                        npm install -g pnpm
+                        pnpm install
+                    '''
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    // 运行构建命令
                     sh '''
                         . $NVM_DIR/nvm.sh
                         nvm use 20.18.1
@@ -29,7 +43,18 @@ pipeline {
                 }
             }
         }
-        // 可以根据需要添加更多的阶段
+        stage('Test') {
+            steps {
+                script {
+                    // 运行测试命令
+                    sh '''
+                        . $NVM_DIR/nvm.sh
+                        nvm use 20.18.1
+                        pnpm run test
+                    '''
+                }
+            }
+        }
     }
     post {
         success {
