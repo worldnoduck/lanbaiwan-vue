@@ -1,23 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Install Node') {
             steps {
-                // 检出代码
-                checkout scm
-                
-                // 构建代码
-                sh 'whoami'
-                sh 'node -v'
-                 sh '''
-                    export NVM_DIR="$HOME/.nvm"
-                    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-                    '''
-                // 安装 NVM
-               
-                sh 'nvm use 20.18.1'
-                sh 'node -v'
-                sh 'npm run build'
+                script {
+                    // Set NVM_DIR environment variable
+                    env.NVM_DIR = '/var/jenkins_home/.nvm'
+                    // Source nvm.sh into the shell
+                    sh 'source ${env.NVM_DIR}/nvm.sh'
+                    // Use the desired version of Node
+                    sh 'nvm install 20.18.1'
+                    sh 'nvm use 20.18.1'
+                }
             }
         }
         stage('Test') {
