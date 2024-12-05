@@ -20,12 +20,14 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    // 安装 pnpm 和项目依赖
+                    // 安装 pnpm 和项目依赖，设置清华镜像源
                     sh '''
                         . $NVM_DIR/nvm.sh
                         nvm use 20.18.1
                         node -v
+                        npm config set registry https://registry.npmmirror.com
                         npm install -g pnpm
+                        pnpm config set registry https://registry.npmmirror.com
                         pnpm install
                     '''
                 }
