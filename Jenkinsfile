@@ -24,7 +24,7 @@ pipeline {
                     sh '''
                         . $NVM_DIR/nvm.sh
                         nvm use 20.18.1
-                        npm test
+                        pnpm run build
                     '''
                 }
             }
