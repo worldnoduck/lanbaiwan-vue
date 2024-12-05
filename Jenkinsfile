@@ -11,13 +11,7 @@ pipeline {
                 sh 'node -v'
                 
                 // 安装 NVM
-                sh '''
-                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-                '''
-                sh '''
-                    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf "%s" "${HOME}/.nvm" || printf "%s" "${XDG_CONFIG_HOME}/nvm")"
-                    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-                '''
+               
                 sh 'nvm use 20.18.1'
                 sh 'node -v'
                 sh 'npm run build'
