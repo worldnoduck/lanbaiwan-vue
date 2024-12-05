@@ -4,13 +4,7 @@ pipeline {
         stage('Install Node') {
             steps {
                 script {
-                    // Set NVM_DIR environment variable
-                    env.NVM_DIR = '/var/jenkins_home/.nvm'
-                    // Source nvm.sh into the shell
-                    sh "source ${env.NVM_DIR}/nvm.sh"
-                    // Use the desired version of Node
-                    sh "nvm install 20.18.1"
-                    sh "nvm use 20.18.1"
+                   sh 'ls -l /var/jenkins_home/.nvm/nvm.sh'
                 }
             }
         }
